@@ -1,0 +1,65 @@
+<div class="container w-100 pb-4">
+  <h2>Details</h2>
+  <div class="details container">
+    <div class="loader" *ngIf="loading">
+      <img
+        src="../../../assets/loading.jpg"
+        width="400"
+        height="400"
+        alt="loading"
+      />
+    </div>
+    <ng-container *ngIf="!loading">
+      <ng-template
+        *ngTemplateOutlet="isEditMode ? editDetails : showDetails"
+      ></ng-template>
+    </ng-container>
+  </div>
+</div>
+
+<ng-template #showDetails>
+  <mat-card class="example-card">
+    <mat-card-title-group>
+      <mat-card-title>Sales Id: {{ salesDetails?.sales_id }}</mat-card-title>
+      <mat-card-subtitle>{{
+        salesDetails?.date_of_purchase
+      }}</mat-card-subtitle>
+      <img mat-card-xl-image src="../../../assets/details.png" />
+    </mat-card-title-group>
+    <mat-card-content class="d-flex justify-content-between">
+      <div>
+        <p>Fuel: {{ salesDetails?.fuel }}</p>
+        <p>Premium: {{ salesDetails?.premium }}</p>
+        <p>Vehicle Segment: {{ salesDetails?.vehicle_segment }}</p>
+        <p>Selling Price: {{ salesDetails?.selling_price }}</p>
+        <p>Power Steering: {{ salesDetails?.power_steering ? "Yes" : "No" }}</p>
+        <p>Airbags: {{ salesDetails?.airbags ? "Yes" : "No" }}</p>
+        <p>Sunroof: {{ salesDetails?.sunroof ? "Yes" : "No" }}</p>
+        <p>Matt Finish: {{ salesDetails?.matt_finish ? "Yes" : "No" }}</p>
+        <p>Music System: {{ salesDetails?.music_system ? "Yes" : "No" }}</p>
+      </div>
+      <div>
+        <p>Customer Id: {{ salesDetails?.customer_id }}</p>
+        <p>Customer Gender: {{ salesDetails?.customer_gender }}</p>
+        <p>Customer Region: {{ salesDetails?.customer_region }}</p>
+        <p>Customer Income Group: {{ salesDetails?.customer_income_group }}</p>
+        <p>
+          Customer Marital Status: {{ salesDetails?.customer_marital_status }}
+        </p>
+      </div>
+    </mat-card-content>
+    <div class="text-center mt-2">
+      <button mat-raised-button color="primary" (click)="isEditMode = true">
+        Edit
+      </button>
+    </div>
+  </mat-card>
+</ng-template>
+
+<ng-template #editDetails>
+  <app-form
+    [formInitialData]="salesDetails"
+    [formType]="'edit'"
+    (formFinalData)="getUpdatedSalesDetails($event)"
+  ></app-form>
+</ng-template>

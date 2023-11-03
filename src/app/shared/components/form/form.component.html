@@ -1,0 +1,250 @@
+<form
+  class="add-details-form"
+  [formGroup]="salesDetailsForm"
+  (ngSubmit)="submitFormHandler($event)"
+>
+  <mat-form-field appearance="outline" class="form-field">
+    <mat-label>Sales Id</mat-label>
+    <input type="text" matInput formControlName="sales_id" />
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" class="form-field">
+    <mat-label>Date of Purchase</mat-label>
+    <input
+      matInput
+      [matDatepicker]="picker"
+      formControlName="date_of_purchase"
+    />
+    <mat-hint>MM/DD/YYYY</mat-hint>
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" class="form-field">
+    <mat-label>Customer Id</mat-label>
+    <input type="text" matInput formControlName="customer_id" />
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" class="form-field">
+    <mat-label>Fuel</mat-label>
+    <mat-select formControlName="fuel">
+      <mat-option *ngFor="let fuel of fuelList" [value]="fuel">
+        {{ fuel }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" class="form-field">
+    <mat-label>Premium</mat-label>
+    <input type="text" matInput formControlName="premium" />
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" class="form-field">
+    <mat-label>Vehicle Segment</mat-label>
+    <mat-select formControlName="vehicle_segment">
+      <mat-option *ngFor="let segment of vehicleSegment" [value]="segment">
+        {{ segment }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" class="form-field">
+    <mat-label>Selling Price</mat-label>
+    <input type="text" matInput formControlName="selling_price" />
+  </mat-form-field>
+
+  <!--Group of two radios-->
+  <div class="d-flex justify-content-between">
+    <div class="radio-form-field px-1">
+      <mat-label>Power Steering</mat-label>
+      <mat-radio-group
+        aria-label="Select an option"
+        formControlName="power_steering"
+      >
+        <mat-radio-button
+          class="radio-button"
+          value="0"
+          [checked]="
+            !formInitialData.power_steering &&
+            formInitialData.power_steering !== null
+          "
+          >No</mat-radio-button
+        >
+        <mat-radio-button
+          value="1"
+          [checked]="
+            formInitialData.power_steering &&
+            formInitialData.power_steering !== null
+          "
+          >Yes</mat-radio-button
+        >
+      </mat-radio-group>
+    </div>
+
+    <div class="radio-form-field px-1">
+      <mat-label>Airbags</mat-label>
+      <mat-radio-group aria-label="Select an option" formControlName="airbags">
+        <mat-radio-button
+          class="radio-button"
+          value="0"
+          [checked]="
+            !formInitialData.airbags && formInitialData.airbags !== null
+          "
+          >No</mat-radio-button
+        >
+        <mat-radio-button
+          value="1"
+          [checked]="
+            formInitialData.airbags && formInitialData.airbags !== null
+          "
+          >Yes</mat-radio-button
+        >
+      </mat-radio-group>
+    </div>
+  </div>
+
+  <div class="d-flex justify-content-between">
+    <div class="radio-form-field px-1">
+      <mat-label>Sunroof</mat-label>
+      <mat-radio-group aria-label="Select an option" formControlName="sunroof">
+        <mat-radio-button
+          class="radio-button"
+          value="0"
+          [checked]="
+            !formInitialData.sunroof && formInitialData.sunroof !== null
+          "
+          >No</mat-radio-button
+        >
+        <mat-radio-button
+          value="1"
+          [checked]="
+            formInitialData.sunroof && formInitialData.sunroof !== null
+          "
+          >Yes</mat-radio-button
+        >
+      </mat-radio-group>
+    </div>
+
+    <div class="radio-form-field px-1">
+      <mat-label>Matt Finish</mat-label>
+      <mat-radio-group
+        aria-label="Select an option"
+        formControlName="matt_finish"
+      >
+        <mat-radio-button
+          class="radio-button"
+          value="0"
+          [checked]="
+            !formInitialData.matt_finish && formInitialData.matt_finish !== null
+          "
+          >No</mat-radio-button
+        >
+        <mat-radio-button
+          value="1"
+          [checked]="
+            formInitialData.matt_finish && formInitialData.matt_finish !== null
+          "
+          >Yes</mat-radio-button
+        >
+      </mat-radio-group>
+    </div>
+  </div>
+
+  <div class="d-flex justify-content-between">
+    <div class="radio-form-field px-1">
+      <mat-label>Music System</mat-label>
+      <mat-radio-group
+        aria-label="Select an option"
+        formControlName="music_system"
+      >
+        <mat-radio-button
+          class="radio-button"
+          value="0"
+          [checked]="
+            !formInitialData.music_system &&
+            formInitialData.music_system !== null
+          "
+          >No</mat-radio-button
+        >
+        <mat-radio-button
+          value="1"
+          [checked]="
+            formInitialData.music_system &&
+            formInitialData.music_system !== null
+          "
+          >Yes</mat-radio-button
+        >
+      </mat-radio-group>
+    </div>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Customer Gender</mat-label>
+      <mat-select formControlName="customer_gender">
+        <mat-option *ngFor="let gender of genders" [value]="gender">
+          {{ gender }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+  <mat-form-field appearance="outline" class="form-field">
+    <mat-label>Customer Income Group</mat-label>
+    <mat-select formControlName="customer_income_group">
+      <mat-option
+        *ngFor="let incomeGroup of incomeGroupList"
+        [value]="incomeGroup"
+      >
+        {{ incomeGroup }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" class="form-field">
+    <mat-label>Customer Region</mat-label>
+    <mat-select
+      formControlName="customer_income_group"
+      formControlName="customer_region"
+    >
+      <mat-option *ngFor="let region of customerRegions" [value]="region">
+        {{ region }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <!--Radio-->
+  <div class="radio-form-field">
+    <mat-label>Customer Marital Status</mat-label>
+    <mat-radio-group
+      aria-label="Select an option"
+      formControlName="customer_marital_status"
+    >
+      <mat-radio-button
+        class="radio-button"
+        value="0"
+        [checked]="
+          !formInitialData.customer_marital_status &&
+          formInitialData.customer_marital_status !== null
+        "
+        >Not-Married</mat-radio-button
+      >
+      <mat-radio-button
+        value="1"
+        [checked]="
+          formInitialData.customer_marital_status &&
+          formInitialData.customer_marital_status !== null
+        "
+        >Married</mat-radio-button
+      >
+    </mat-radio-group>
+  </div>
+  <div class="text-center mb-3">
+    <button
+      mat-raised-button
+      color="primary"
+      type="submit"
+      [disabled]="!salesDetailsForm.dirty || salesDetailsForm.invalid"
+    >
+      Add Details
+    </button>
+  </div>
+</form>

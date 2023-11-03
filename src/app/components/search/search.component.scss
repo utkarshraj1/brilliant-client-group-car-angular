@@ -1,0 +1,48 @@
+.search-bar {
+  width: 400px;
+}
+.search-results {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  .selection-list {
+    max-width: 400px;
+    min-width: 400px;
+    .list-options {
+      border-bottom: 1px solid #dee2e6;
+      border-radius: 5px;
+      &:hover {
+        border: 2px solid #495057;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 502px) {
+  .search-section {
+    .search-bar {
+      max-width: 300px;
+      min-width: 300px;
+    }
+    .selection-list {
+      max-width: 300px;
+      min-width: 300px;
+    }
+  }
+}
+
+@media screen and (max-width: 330px) {
+  .search-bar {
+    max-width: 200px;
+    min-width: 200px;
+  }
+  .selection-list {
+    max-width: 200px;
+    min-width: 200px;
+  }
+}
+
+// 770px breakpoint 1
+// 502px breakpoint 2
+// 330px breakpoint 3

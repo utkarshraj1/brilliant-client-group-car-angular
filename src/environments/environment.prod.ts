@@ -1,3 +1,5 @@
 export const environment = {
-  production: true
+  // will be replaced
+  url: 'http://localhost:4000',
+  production: true,
 };

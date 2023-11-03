@@ -1,0 +1,20 @@
+.logo {
+  cursor: pointer;
+}
+.feature-container {
+  height: 80%;
+}
+.footer {
+  bottom: 0;
+  background-color: #f5f5f5;
+  .social-link {
+    text-decoration: none;
+    color: black;
+  }
+}
+
+@media screen and (max-width: 502px) {
+  .footer {
+    display: none;
+  }
+}

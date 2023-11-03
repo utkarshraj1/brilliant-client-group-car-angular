@@ -1,0 +1,12 @@
+<div class="container details-container pb-4">
+  <h2 class="pl-3 pt-3 pb-4">Add Sales Details</h2>
+  <div class="container form-container d-flex justify-content-center">
+    <div>
+      <app-form
+        [formInitialData]="salesDetailsInitialForm"
+        [formType]="'add'"
+        (formFinalData)="getAndSubmitFormData($event)"
+      ></app-form>
+    </div>
+  </div>
+</div>

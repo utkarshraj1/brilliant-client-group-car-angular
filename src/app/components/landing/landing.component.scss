@@ -1,0 +1,17 @@
+.landing-container {
+  height: 80%;
+  .row-items {
+    height: 100%;
+    align-items: center;
+    .card-container {
+      border-top: 2px solid blue;
+      min-height: 200px;
+    }
+  }
+}
+
+@media screen and (max-width: 502px) {
+  .card-container {
+    min-height: 150px;
+  }
+}

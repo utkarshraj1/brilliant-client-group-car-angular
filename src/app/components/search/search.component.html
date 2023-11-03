@@ -1,0 +1,60 @@
+<div class="container w-100 pb-4">
+  <h2>Search Sales details</h2>
+  <div class="container text-center">
+    <div class="search-section text-center">
+      <mat-form-field class="search-bar" appearance="outline">
+        <mat-label>Search</mat-label>
+        <input #searchInput matInput type="text" [(ngModel)]="searchItem" />
+        <mat-hint>Type sales/customer id</mat-hint>
+        <button
+          matSuffix
+          mat-icon-button
+          *ngIf="searchItem.length !== 0"
+          (click)="searchItem = ''"
+        >
+          <mat-icon>close</mat-icon>
+        </button>
+      </mat-form-field>
+      <ng-template *ngTemplateOutlet="spinner"> </ng-template>
+      <div *ngIf="messageToShow.length !== 0">
+        {{ messageToShow }}
+      </div>
+      <div class="search-results" *ngIf="searchResults.length !== 0">
+        <mat-selection-list [multiple]="false" class="selection-list">
+          <mat-list-option
+            class="list-options"
+            *ngFor="let result of searchResults"
+            [value]="result"
+            (click)="goToSalesDetails(result)"
+          >
+            SalesId: {{ result.split("/")[0] }} - CustomerId:
+            {{ result.split("/")[1] }}
+          </mat-list-option>
+        </mat-selection-list>
+        <ng-template *ngTemplateOutlet="spinner"> </ng-template>
+      </div>
+      <div class="mt-2">
+        <button
+          mat-raised-button
+          color="primary"
+          (click)="loadMore()"
+          *ngIf="
+            searchItem !== '' &&
+            searchResults.length < totalDataLength &&
+            searchResults.length > 0
+          "
+        >
+          Load more
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #spinner>
+  <div class="p-2" *ngIf="loading">
+    <mat-icon class="loading-icon">
+      <mat-spinner diameter="40"></mat-spinner>
+    </mat-icon>
+  </div>
+</ng-template>

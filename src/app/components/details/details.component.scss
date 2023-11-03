@@ -1,0 +1,28 @@
+.card-container {
+  border-top: 2px solid blue;
+  min-height: 200px;
+}
+.details {
+  text-align: -webkit-center;
+}
+.loader {
+  animation: loading 2s infinite linear;
+}
+
+@keyframes loading {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@media screen and (max-width: 502px) {
+  .card-container {
+    min-height: 150px;
+  }
+}
